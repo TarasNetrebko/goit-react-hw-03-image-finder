@@ -89,7 +89,7 @@ export class App extends Component {
           <Searchbar onSubmit={this.searchSubmitHandler} />
           <ImageGallery images={this.state.images} onToggle={this.toggleModal} />
           <Button onLoadMore={() => this.loadMoreHandler()} />
-          {showModal === true && <Modal/>}
+          {showModal && <Modal/>}
           <ToastContainer autoClose={3000} />
         </>
       );
