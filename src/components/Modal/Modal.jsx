@@ -10,7 +10,7 @@ export class Modal extends Component {
     render() {
     const { id, largeImg } = this.props;
     return (
-      <div classname="Overlay">
+      <div className="Overlay">
         <div className="Modal">
           <img src={largeImg} alt={id} />
         </div>

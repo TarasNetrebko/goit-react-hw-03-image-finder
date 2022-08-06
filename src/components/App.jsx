@@ -12,6 +12,7 @@ export class App extends Component {
     page: 1,
     stage: 'idle',
     showModal: false,
+    currentImage: ""
   };
   componentDidUpdate(prevProps, prevState) {
     const { filter, page } = this.state;
@@ -34,9 +35,14 @@ export class App extends Component {
       );
     }
   }
-  toggleModal = () => {
-    this.setState((({ showModal}) => ({ showModal: !showModal})))
-
+  toggleModal = (img) => {
+    const { currentImage} = this.state;
+    if (currentImage === "") {
+      this.setState((({ showModal}) => ({ showModal: !showModal, currentImage: img })))
+    } else {
+      this.setState((({ showModal}) => ({ showModal: !showModal, currentImage: "" })))
+    }
+    
   }
   async fetchImagesHandler() {
     this.setState({ stage: 'pending' });
@@ -62,7 +68,7 @@ export class App extends Component {
     this.setState({ page: this.state.page + 1 });
   }
   render() {
-    const { stage, showModal } = this.state;
+    const { stage, showModal, currentImage } = this.state;
     if (stage === 'idle') {
       return ( 
         <>
@@ -89,7 +95,7 @@ export class App extends Component {
           <Searchbar onSubmit={this.searchSubmitHandler} />
           <ImageGallery images={this.state.images} onToggle={this.toggleModal} />
           <Button onLoadMore={() => this.loadMoreHandler()} />
-          {showModal && <Modal/>}
+          {showModal && <Modal largeImg={currentImage} />}
           <ToastContainer autoClose={3000} />
         </>
       );
