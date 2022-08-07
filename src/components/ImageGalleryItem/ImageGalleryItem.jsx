@@ -11,7 +11,7 @@ export const ImageGalleryItem = ({ id, smallImage, largeImg, onOpenModal }) => {
 
 ImageGalleryItem.propTypes = {
   id: PropTypes.number.isRequired,
-  webformatUrl: PropTypes.string.isRequired,
-  largeImageURL: PropTypes.string.isRequired,
+  webformatUrl: PropTypes.string,
+  largeImageURL: PropTypes.string,
   onOpenModal: PropTypes.func.isRequired,
 };
