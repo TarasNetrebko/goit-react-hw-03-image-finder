@@ -6,6 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from "prop-types"
 
 export class Searchbar extends Component {
+  static propTypes = {
+  onSubmit: PropTypes.func.isRequired
+}
   state = {
     filter: '',
   };
@@ -44,8 +47,4 @@ export class Searchbar extends Component {
       </header>
     );
   }
-}
-
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired
 }

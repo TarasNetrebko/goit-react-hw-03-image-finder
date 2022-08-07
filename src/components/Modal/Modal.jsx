@@ -5,6 +5,10 @@ import PropTypes from "prop-types"
 
 const modalRoot = document.querySelector('#modal-root');
 export class Modal extends Component {
+  static propTypes = {
+  largeImg: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired
+}
   clickEscapeHandler = e => {
     if (e.code === 'Escape') {
       this.props.onClose();
@@ -32,9 +36,4 @@ export class Modal extends Component {
       modalRoot
     );
   }
-}
-
-Modal.propTypes = {
-  largeImg: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired
 }
